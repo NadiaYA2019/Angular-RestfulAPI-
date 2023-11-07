@@ -28,9 +28,14 @@ export class AddUserComponent implements OnInit {
 
   save() {
     this.userService.addUser(this.user)
-      .subscribe(data => console.log(data), error => console.log(error));
-    this.user = new User();
-    this.usersList();
+      .subscribe(data => {
+        console.log(data);
+        this.user = new User();
+        this.usersList();
+      }
+        , error => console.log(error));
+
+
   }
 
   onSubmit() {

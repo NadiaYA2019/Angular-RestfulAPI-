@@ -1,17 +1,18 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { User } from './user';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  public baseUrl = "https://ti-react-test.herokuapp.com/users";
 
   constructor(private httpClient: HttpClient) {
 
   }
+  baseUrl = "https://653b530d2e42fd0d54d4eae6.mockapi.io/users";
 
   public getUsers(): Observable<any> {
     return this.httpClient.get(this.baseUrl);
@@ -29,8 +30,8 @@ export class UserService {
     return this.httpClient.put(`${this.baseUrl}/${id}`, value);
   }
 
-  public addUser(user: object): Observable<object> {
-    return this.httpClient.post(`${this.baseUrl}`, user);
+  public addUser(user: object): Observable<User> {
+    return this.httpClient.post<User>(`${this.baseUrl}`, user);
   }
 
 }
