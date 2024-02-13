@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { User } from './user';
 
 @Injectable({
@@ -14,8 +14,8 @@ export class UserService {
   }
   baseUrl = "https://653b530d2e42fd0d54d4eae6.mockapi.io/users";
 
-  public getUsers(): Observable<any> {
-    return this.httpClient.get(this.baseUrl);
+  public getUsers(): Observable<User[]> {
+    return this.httpClient.get<User[]>(this.baseUrl);
   }
 
   public getUser(id: number): Observable<any> {

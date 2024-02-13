@@ -20,7 +20,8 @@ export class UserListComponent implements OnInit {
   value = 50;
   displayedColumns = ['name', 'email', 'occupation', 'action', 'actionu', 'actiond'];
 
-  constructor(private userService: UserService, private router: Router,) { }
+  constructor(private userService: UserService, private router: Router) { }
+
 
   ngOnInit() {
 
@@ -56,6 +57,7 @@ export class UserListComponent implements OnInit {
 
   search() {
     this.isLoading = true;
+    console.log(this.users);
     this.users = this.users.filter(res => {
       if (!this.users || !this.email) {
         this.userService.getUsers().subscribe(data => {
